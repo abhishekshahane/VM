@@ -21,10 +21,16 @@ class VM:
                 b = self.getByte()
                 value = self.getRegister(b)
                 self.setRegister(a, value)
+        elif(self.program[self.IP] == 0x03):
+            a = self.getByte()
+            b = self.getByte()
+            value = self.getRegister(a) + self.getRegister(b)
+            self.setRegister(a, value)
             
         self.IP += 1
 
-            
+    def add(self, a, b):
+        return a + b
     def getRegister(self, id):
         if (self.program[self.IP] == 0x00 ):
             return self.REG_a
@@ -69,8 +75,9 @@ class VM:
         return self.program[self.IP]
         
     
-            
-instructions = [0x01, 0x01, 0x12, 0x32, 0x56, 0x78, 0x02, 0x00, 0x01, 0x00]
+# What these instructions are doing are telling the computer to register,
+# Then saying we want to  add them.
+instructions = [0x01, 0x02, 0x12, 0x32, 0x56, 0x78, 0x01, 0x03, 0x34, 0x23, 0x32, 0x32,0x03, 0x02, 0x03, 0x00]
 vm = VM(instructions)
 vm.run()
 vm.debug()
