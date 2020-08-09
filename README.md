@@ -1,2 +1,2 @@
 # VM
-A virtual machine.
+A virtual machine written in Python.
