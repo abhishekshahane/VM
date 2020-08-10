@@ -26,6 +26,21 @@ class VM:
             b = self.getByte()
             value = self.getRegister(a) + self.getRegister(b)
             self.setRegister(a, value)
+        elif(self.program[self.IP] == 0x03):
+            a = self.getByte()
+            b = self.getByte()
+            value = self.getRegister(a) - self.getRegister(b)
+            self.setRegister(a, value)
+        elif(self.program[self.IP] == 0x03):
+            a = self.getByte()
+            b = self.getByte()
+            value = self.getRegister(a) * self.getRegister(b)
+            self.setRegister(a, value)
+        elif(self.program[self.IP] == 0x03):
+            a = self.getByte()
+            b = self.getByte()
+            value = self.getRegister(a) // self.getRegister(b)
+            self.setRegister(a, value)
             
         self.IP += 1
 
