@@ -26,21 +26,27 @@ class VM:
             b = self.getByte()
             value = self.getRegister(a) + self.getRegister(b)
             self.setRegister(a, value)
-        elif(self.program[self.IP] == 0x03):
+        elif(self.program[self.IP] == 0x04):
             a = self.getByte()
             b = self.getByte()
             value = self.getRegister(a) - self.getRegister(b)
             self.setRegister(a, value)
-        elif(self.program[self.IP] == 0x03):
+        elif(self.program[self.IP] == 0x05):
             a = self.getByte()
             b = self.getByte()
             value = self.getRegister(a) * self.getRegister(b)
             self.setRegister(a, value)
-        elif(self.program[self.IP] == 0x03):
+        elif(self.program[self.IP] == 0x06):
             a = self.getByte()
             b = self.getByte()
             value = self.getRegister(a) // self.getRegister(b)
             self.setRegister(a, value)
+        elif(self.program[self.IP] == 0x07):
+            # Getting the byte a, assigning it to value, copying it to a afterwards.
+            a = self.getByte()
+            value = self.getRegister(a)**0.5
+            self.setRegister(a, value)
+            
             
         self.IP += 1
 
