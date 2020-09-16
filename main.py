@@ -1,3 +1,4 @@
+import math
 class VM:
     def __init__(self, instructions):
         self.program = instructions
@@ -46,6 +47,10 @@ class VM:
             a = self.getByte()
             value = self.getRegister(a)**0.5
             self.setRegister(a, value)
+        elif(self.program[self.IP] == 0x08):
+            a = self.getByte
+            value = self.getRegister(math.cos(a))
+            self.setRegister(a,value)
             
             
         self.IP += 1
@@ -53,7 +58,7 @@ class VM:
     def add(self, a, b):
         return a + b
     def getRegister(self, id):
-        if (self.program[self.IP] == 0x00 ):
+        if (self.program[self.IP] == 0x00):
             return self.REG_a
         elif (self.program[self.IP] == 0x01):
             return self.REG_b
