@@ -45,7 +45,7 @@ class VM:
         elif(self.program[self.IP] == 0x07):
             # Getting the byte a, assigning it to value, copying it to a afterwards.
             a = self.getByte()
-            value = self.getRegister(a)**0.5
+            value = self.getRegister(a**0.5)
             self.setRegister(a, value)
         elif(self.program[self.IP] == 0x08):
             a = self.getByte
